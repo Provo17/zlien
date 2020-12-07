@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>ZLIEN</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+
+  <h1>Please upload projects csv.</h1>
+
+  {% if messages %}
+          {% for message in messages %}
+              <div>
+                  <strong>{{message|safe}}</strong>
+              </div>
+          {% endfor %}
+      {% else %}
+      {{order}}
+      <hr>
+      <form action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <label for="file1"> Upload a file</label>
+          <input type="file" id="file1" name="file">
+          <small>Only accepts CSV files</small>
+          <button type="submit">Upload</button>
+      </form>
+      {% endif %}
+      {% for project in projects %}
+      {{project.name}}
+      {% endfor %}
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>
