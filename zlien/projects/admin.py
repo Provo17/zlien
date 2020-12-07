@@ -4,4 +4,8 @@ from django.contrib import admin
 
 from .models import *
 
-admin.site.register(Projects)
+class ProjectsAdmin(admin.ModelAdmin):
+    list_display = ('customer_name', 'project_name',)
+    list_display_links = ('customer_name',)
+
+admin.site.register(Projects, ProjectsAdmin)

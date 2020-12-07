@@ -22,9 +22,9 @@ class Projects(models.Model):
     project_city = models.CharField(max_length=255)
     project_state = models.CharField(max_length=2)
     project_zip = ZipCodeField(max_value=5)
-    project_start_date = models.DateField(auto_now=True)
+    project_start_date = models.DateField(auto_now=False)
     project_outstading_debt = models.DecimalField(blank=True, max_digits=20, decimal_places=2)
-    project_commencement_date = models.DateField(blank=True, auto_now=True)
+    project_commencement_date = models.DateField(blank=True, auto_now=False)
     order_type = models.CharField(max_length=255, blank=True, choices=order_type)
 
 
