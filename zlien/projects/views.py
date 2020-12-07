@@ -39,6 +39,8 @@ def project_upload(request):
     context = {}
     return render(request, template, context)
 
+
+
 def project_listing(request):
     template = "project_list.html"
     projects = list(Projects.objects.all())
