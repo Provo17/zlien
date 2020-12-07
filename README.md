@@ -25,6 +25,8 @@ Installation and Usage:
 
 Mock Data can be downloaded usinf this link and clicking the green Download Data button: https://www.mockaroo.com/180bf580
 
+10% of the data is missing a required field and 5% of the data has no commencement date.
+
 After data upload Users can view and edit data by navigating to the link below and using the provided credentials
 
 Admin Login:
