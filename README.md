@@ -12,15 +12,15 @@ Installation and Usage:
 - Using the terminal navigate to the project directory and PIP install Virtual Environment
 
 - Start Virtual environment with the command
-'''source {env_name}/bin/activate'''
+```source {env_name}/bin/activate```
 
 - Navigate to django project root (The root is on the smae directory level as the manage.py and requirements.txt files)
 
 - Install dependecies
-'''pip install -r requirements.txt'''
+```pip install -r requirements.txt```
 
 - To run the application type the following command in the terminal and navigate to http://localhost:8000/ in the browser
-'''python manage.py runserver'''
+```python manage.py runserver```
 
 
 Mock Data can be downloaded usinf this link and clicking the green Download Data button: https://www.mockaroo.com/180bf580
