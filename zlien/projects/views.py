@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib import messages
-import csv, io
+import csv, io, datetime
 from .models import *
 
 def project_upload(request):
@@ -26,18 +26,23 @@ def project_upload(request):
     io_string = io.StringIO(data_set)
     next(io_string)
     for column in csv.reader(io_string, delimiter=',', quotechar="|"):
-        _, created = Projects.objects.update_or_create(
-            customer_name=column[0],
-            project_name=column[1],
-            project_address=column[2],
-            project_city=column[3],
-            project_state=column[4],
-            project_zip=column[5],
-            project_start_date=column[6],
-            project_outstading_debt=column[7],
-            project_commencement_date=column[8],
-            order_type=column[9]
-        )
+        #Check if commencement date is blank, if so, add today's date
+        if column[8] == '':
+            column[8] = datetime.datetime.now()
+        #check if all other colums are present, only upload those that are.    
+        if all(column):
+            _, created = Projects.objects.update_or_create(
+                customer_name=column[0],
+                project_name=column[1],
+                project_address=column[2],
+                project_city=column[3],
+                project_state=column[4],
+                project_zip=column[5],
+                project_start_date=column[6],
+                project_outstading_debt=column[7],
+                project_commencement_date=column[8],
+                order_type=column[9]
+            )
     context = {}
     return render(request, template, context)
 
