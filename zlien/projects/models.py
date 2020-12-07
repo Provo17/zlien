@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 
-#Custom field to impose a 5 int limit for zip code
+#Custom field to impose a 5 int limit for zip code. By default Django ignores int limits when using the integer field.
 class ZipCodeField(models.IntegerField):
     def __init__(self, verbose_name=None, name=None, max_value=None, **kwargs):
         self.max_value = max_value
@@ -13,6 +13,7 @@ class ZipCodeField(models.IntegerField):
         defaults.update(kwargs)
         return super(ZipCodeField, self).formfield(**defaults)
 
+#Main projects class
 class Projects(models.Model):
     order_type = [('Notice','Notice'),
                 ('Lien','Lien')]

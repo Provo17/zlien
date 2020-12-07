@@ -6,6 +6,8 @@ from .models import *
 def project_upload(request):
     # declaring template
     template = "index.html"
+
+    #Queryset to return all project objects
     data = Projects.objects.all()
     # prompt is a context variable that can have different values      depending on their context
     prompt = {
@@ -42,9 +44,13 @@ def project_upload(request):
 
 
 def project_listing(request):
+    # declaring template
     template = "project_list.html"
+
+    #Queryset to return all project objects
     projects = list(Projects.objects.all())
 
+    #Sends queryset to template
     context = {
         'projects': projects,
     }
