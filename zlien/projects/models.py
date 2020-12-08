@@ -1,17 +1,6 @@
 from django.db import models
-
-# Create your models here.
-
-
-#Custom field to impose a 5 int limit for zip code. By default Django ignores int limits when using the integer field.
-class ZipCodeField(models.IntegerField):
-    def __init__(self, verbose_name=None, name=None, max_value=None, **kwargs):
-        self.max_value = max_value
-        models.IntegerField.__init__(self, verbose_name, name, **kwargs)
-    def formfield(self, **kwargs):
-        defaults = {'max_value':self.max_value}
-        defaults.update(kwargs)
-        return super(ZipCodeField, self).formfield(**defaults)
+from .custom_fields import ZipCodeField
+import datetime
 
 #Main projects class
 class Projects(models.Model):
@@ -28,6 +17,17 @@ class Projects(models.Model):
     project_commencement_date = models.DateField(blank=True, auto_now=False)
     order_type = models.CharField(max_length=255, blank=True, choices=order_type)
 
+    @property
+    def order_deadline(self):
+        if self.order_type == 'Notice':
+            if self.project_state == "TX":
+                deadline = self.project_commencement_date + datetime.timedelta(15)
+                return deadline
+            deadline = self.project_commencement_date + datetime.timedelta(60)
+            return deadline
+        else:
+            deadline = self.project_commencement_date + datetime.timedelta(90)
+            return deadline
 
     def __str__(self):
         return self.customer_name

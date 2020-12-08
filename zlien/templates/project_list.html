@@ -21,14 +21,10 @@
       <div class="row">
         <div class="col">Customer Name</div>
         <div class="col">Project Name</div>
-        <div class="col">Address</div>
-        <div class="col">City</div>
         <div class="col">State</div>
-        <div class="col">Zip</div>
-        <div class="col">Date</div>
-        <div class="col">Outstanding Debt</div>
-        <div class="col">Commencment</div>
         <div class="col">Order Type</div>
+        <div class="col">Commencement</div>
+        <div class="col">Deadline</div>
       </div>
       <hr>
     {% for project in projects %}
@@ -40,28 +36,16 @@
           <p>{{project.project_name}}</p>
         </div>
         <div class="col">
-          <p>{{project.project_address}}</p>
-        </div>
-        <div class="col">
-          <p>{{project.project_city}}</p>
-        </div>
-        <div class="col">
           <p>{{project.project_state}}</p>
         </div>
         <div class="col">
-          <p>{{project.project_zip}}</p>
-        </div>
-        <div class="col">
-          <p>{{project.project_start_date}}</p>
-        </div>
-        <div class="col">
-          <p>${{project.project_outstading_debt}}</p>
+          <p>{{project.order_type}}</p>
         </div>
         <div class="col">
           <p>{{project.project_commencement_date}}</p>
         </div>
         <div class="col">
-          <p>{{project.order_type}}</p>
+          <p>{{project.order_deadline}}</p>
         </div>
       </div>
         <hr>
